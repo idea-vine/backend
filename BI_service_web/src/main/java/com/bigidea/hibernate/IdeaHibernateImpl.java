@@ -12,4 +12,13 @@ public class IdeaHibernateImpl extends BaseDao<Ideas, Integer> implements IdeaHi
 		return (List<Ideas>) find(hql, uid);
 	}
 
+	
+	public void saveIdea(Ideas idea) {
+		save(idea);
+	}
+	
+
+	public List<Ideas> getAllIdeas(Integer uid) {
+		return loadAll(Ideas.class);
+	}
 }

@@ -17,7 +17,35 @@ public class Ideas {
 	@OneToMany
 	private Integer userId;
 	@Column
-	private String text;
+	private String title;
+	@Column
+	private String desc;
+	@Column
+	private String fullText;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public String getFullText() {
+		return fullText;
+	}
+
+	public void setFullText(String fullText) {
+		this.fullText = fullText;
+	}
 
 	public Integer getUserId() {
 		return userId;
@@ -25,14 +53,6 @@ public class Ideas {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
 	}
 
 	public Integer getId() {
