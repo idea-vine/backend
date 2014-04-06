@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.h2.engine.User;
+
 
 
 
@@ -33,6 +35,10 @@ public class Users implements Serializable{
 
 	@Column(unique = true, nullable=false)
 	private String email;
+	
+	public Users(Integer id){
+		this.id = id;
+	}
 	
 	public Integer getId() {
 		return id;
