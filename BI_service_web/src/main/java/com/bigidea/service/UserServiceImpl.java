@@ -20,12 +20,12 @@ public class UserServiceImpl implements UserService {
 		return userHibernate.getUser(users.getId());
 	}
 
-	@Transactional(propagation=Propagation.SUPPORTS)
+	@Transactional
 	public Users get(Integer id) {
 		return userHibernate.getUser(id);
 	}
 
-	@Transactional(propagation=Propagation.SUPPORTS)
+	@Transactional
 	public Users getUserByEmail(String email) {
 		return userHibernate.getUser(email);
 	}
