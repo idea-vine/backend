@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples.service.service</groupId>
-	<artifactId>BI_service_web</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>ideavine_serv</artifactId>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -139,4 +139,29 @@
 		</dependency>
 
 	</dependencies>
+	
+		<build>
+		<!-- Configure this project's source and test files. -->
+		<sourceDirectory>src/main/java</sourceDirectory>
+	
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>${warName}</warName>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+
+			</resource>
+		</resources>
+	</build>
+	
 </project>
