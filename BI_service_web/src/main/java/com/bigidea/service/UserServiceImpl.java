@@ -11,13 +11,12 @@ public class UserServiceImpl implements UserService {
 	public UserHibernate userHibernate;
 
 	public Users save(Users users) {
-		// TODO Auto-generated method stub
-		return null;
+		save(users);
+		return userHibernate.getUser(users.getId());
 	}
 
 	public Users get(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userHibernate.getUser(id);
 	}
 
 	public Users getUserByEmail(String email) {
@@ -25,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void deleteUser(Users users) {
-		// TODO Auto-generated method stub
+		deleteUser(users);
 
 	}
 
