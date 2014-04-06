@@ -2,6 +2,7 @@ package com.bigidea.controller;
 
 
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bigidea.entity.Greeting;
 import com.bigidea.entity.Ideas;
 import com.bigidea.hibernate.IdeaHibernate;
+import com.bigidea.service.IdeaService;
 
 @Controller
-public class HomeController {
+public class HomeController extends RestServiceController{
 
 	
 
@@ -26,7 +28,7 @@ public class HomeController {
     private final AtomicLong counter = new AtomicLong();
     
     @Autowired
-    private IdeaHibernate ideaHibernate; 
+    private IdeaService ideaService; 
 
     @RequestMapping(value = "/greeting", method = RequestMethod.GET, headers = "content-type=application/*")
     public @ResponseBody Greeting greeting(
@@ -37,9 +39,8 @@ public class HomeController {
     
     
     
-    @RequestMapping(value = "/save", method = RequestMethod.GET, headers = "content-type=application/*")
-    @Transactional(propagation=Propagation.REQUIRED)
-    public  void save(
+    @RequestMapping(value = "/idea/save", method = RequestMethod.GET, headers = "content-type=application/*")
+    public  @ResponseBody ServiceResponse<String,Ideas> save(
             @RequestParam(value="title", required=true, defaultValue="FirstTitle") String title,
             @RequestParam(value="desc", required=true, defaultValue="DESCription") String desc,
             @RequestParam(value="longdesc", required=true, defaultValue="very long desc") String longdesc) {
@@ -49,8 +50,19 @@ public class HomeController {
     	i.setFullText(longdesc);
     	i.setTitle(title);
     	
-    	ideaHibernate.saveIdea(i);
+    	i = ideaService.saveIdeas(i);
+    	ServiceResponse<String, Ideas> response = new ServiceResponse<String, Ideas>(null, i, false);
+    	return response;
     	
+    }
+    
+    @RequestMapping(value = "/idea/all", method = RequestMethod.GET, headers = "content-type=application/*")
+    public @ResponseBody ServiceResponse<String, List<Ideas>> getAllIdeas(){
+    	List<Ideas> ideList = ideaService.getAllIdeas();
+    	ServiceResponse<String , List<Ideas>> response = new ServiceResponse<String, List<Ideas>>(null, ideList, false);
+    	return response;
+    	
+    
     }
     
 }
