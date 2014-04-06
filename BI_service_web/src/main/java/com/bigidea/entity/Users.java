@@ -44,6 +44,12 @@ public class Users implements Serializable{
 		
 	}
 	
+	public Users(String fname, String lname, String email){
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+	}
+	
 	
 	
 	public String getEmail() {
