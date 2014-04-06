@@ -17,7 +17,7 @@ public class IdeaServiceImpl implements IdeaService {
 	@Autowired
 	public IdeaHibernate ideaHibernate;
 
-	@Transactional(propagation=Propagation.SUPPORTS)
+	@Transactional
 	public Ideas getIdea(Integer id) {
 		return ideaHibernate.getIdeaByid(id);
 	}
@@ -34,14 +34,14 @@ public class IdeaServiceImpl implements IdeaService {
 
 	}
 
-	@Transactional(propagation=Propagation.SUPPORTS)
+	@Transactional
 	public List<Ideas> getIdeasByUser(Users users) {
 	
 		return ideaHibernate.getAllIdeasByUser(users.getId());
 		
 	}
 
-	@Transactional(propagation=Propagation.SUPPORTS)
+	@Transactional
 	public List<Ideas> getAllIdeas() {
 		return ideaHibernate.getAllIdeas();
 	}
