@@ -28,7 +28,7 @@ public abstract class RestServiceController {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			response.getWriter().append(jacksonObjectMapper.writeValueAsString(serviceResponse)).close();
 		} catch (IOException ioe) {
-			logger.error("Could not serialize AamcServiceResponse: " + ioe.getMessage());
+			logger.error("Could not serialize ServiceResponse: " + ioe.getMessage());
 		}
 	}
 
