@@ -1,7 +1,13 @@
 package com.bigidea.controller;
 
-public class ServiceResponse<ERROR, VALUE> {
+import java.io.Serializable;
+
+public class ServiceResponse<ERROR, VALUE> implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5506544159204157231L;
 	private VALUE value;
 	private boolean isError;
 	private ERROR error;

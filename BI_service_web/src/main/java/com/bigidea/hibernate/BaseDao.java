@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate4.SessionFactoryUtils;
@@ -24,6 +25,7 @@ public class BaseDao<T, PK extends Serializable> {
 	public void save(T persistentObject) {
 		getSession().saveOrUpdate(persistentObject);
 		getSession().flush();
+		
 	}
 
 	@SuppressWarnings("unchecked")

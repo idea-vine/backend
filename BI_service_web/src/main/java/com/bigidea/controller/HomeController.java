@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,16 +40,8 @@ public class HomeController extends RestServiceController{
     
     
     
-    @RequestMapping(value = "/idea/save", method = RequestMethod.GET, headers = "content-type=application/*")
-    public  @ResponseBody ServiceResponse<String,Ideas> save(
-            @RequestParam(value="title", required=true, defaultValue="FirstTitle") String title,
-            @RequestParam(value="desc", required=true, defaultValue="DESCription") String desc,
-            @RequestParam(value="longdesc", required=true, defaultValue="very long desc") String longdesc) {
-    	
-    	Ideas i = new Ideas();
-    	i.setDesc(desc);
-    	i.setFullText(longdesc);
-    	i.setTitle(title);
+    @RequestMapping(value = "/idea/save", method = RequestMethod.POST, headers = "content-type=application/*")
+    public  @ResponseBody ServiceResponse<String,Ideas> save(@RequestBody Ideas i) {
     	
     	i = ideaService.saveIdeas(i);
     	ServiceResponse<String, Ideas> response = new ServiceResponse<String, Ideas>(null, i, false);
