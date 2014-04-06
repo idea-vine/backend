@@ -25,7 +25,7 @@ public class IdeaServiceImpl implements IdeaService {
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Ideas saveIdeas(Ideas ideas) {
 		ideaHibernate.saveIdea(ideas);
-		return ideaHibernate.getIdeaByid(ideas.getId());
+		return ideas;
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)

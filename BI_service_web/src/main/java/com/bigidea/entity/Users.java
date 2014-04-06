@@ -1,17 +1,28 @@
 package com.bigidea.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.h2.engine.User;
 
 
 
 
 
 @Entity
-public class Users {
+@Table
+public class Users implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4729567069977681035L;
+
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -24,6 +35,10 @@ public class Users {
 
 	@Column(unique = true, nullable=false)
 	private String email;
+	
+	public Users(Integer id){
+		this.id = id;
+	}
 	
 	public Integer getId() {
 		return id;

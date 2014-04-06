@@ -1,13 +1,21 @@
 package com.bigidea.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Scores {
+@Table
+public class Scores implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2625579955799215152L;
 	@Id
 	@GeneratedValue
 	private Integer id;

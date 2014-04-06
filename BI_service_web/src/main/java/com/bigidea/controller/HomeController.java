@@ -5,11 +5,8 @@ package com.bigidea.controller;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bigidea.entity.Greeting;
 import com.bigidea.entity.Ideas;
 import com.bigidea.entity.Users;
-import com.bigidea.hibernate.IdeaHibernate;
 import com.bigidea.service.IdeaService;
 import com.bigidea.service.UserService;
 
@@ -47,16 +43,8 @@ public class HomeController extends RestServiceController{
     
     
     
-    @RequestMapping(value = "/idea/save", method = RequestMethod.GET, headers = "content-type=application/*")
-    public  @ResponseBody ServiceResponse<String,Ideas> save(
-            @RequestParam(value="title", required=true, defaultValue="FirstTitle") String title,
-            @RequestParam(value="desc", required=true, defaultValue="DESCription") String desc,
-            @RequestParam(value="longdesc", required=true, defaultValue="very long desc") String longdesc) {
-    	
-    	Ideas i = new Ideas();
-    	i.setDesc(desc);
-    	i.setFullText(longdesc);
-    	i.setTitle(title);
+    @RequestMapping(value = "/idea/save", method = RequestMethod.POST, headers = "content-type=application/*")
+    public  @ResponseBody ServiceResponse<String,Ideas> save(@RequestBody Ideas i) {
     	
     	i = ideaService.saveIdeas(i);
     	ServiceResponse<String, Ideas> response = new ServiceResponse<String, Ideas>(null, i, false);
