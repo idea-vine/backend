@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigidea.entity.Greeting;
 import com.bigidea.entity.Ideas;
+import com.bigidea.entity.Scores;
 import com.bigidea.entity.Users;
 import com.bigidea.service.IdeaService;
 import com.bigidea.service.UserService;
@@ -170,6 +171,19 @@ public class HomeController extends RestServiceController{
     	userService.save(users5);
     	Users users6 = new Users("Diane", "Concentria","test6@test.com");
     	userService.save(users6);
+    	
+    }
+    
+    @RequestMapping(value="/setup/idea", method=RequestMethod.GET)
+    public void setUpIdea(){
+    	Scores scores = new Scores( new Integer(50),  new Integer(50),  new Integer(100),  new Integer(200));
+    	Ideas ideas = new Ideas(1, "Big Idea", "Big Idea", "Big Idea", scores);
+    	ideaService.saveIdeas(ideas);
+    	Scores scores1 = new Scores( new Integer(50),  new Integer(50),  new Integer(100),  new Integer(200));
+    	Ideas ideas1 = new Ideas(1, "Small Idea", "Small Idea", "Small Idea", scores1);
+    	ideaService.saveIdeas(ideas1);
+    	
+    	
     	
     }
     

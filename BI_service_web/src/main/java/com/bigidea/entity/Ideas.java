@@ -32,6 +32,14 @@ public class Ideas implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "scoreId")
 	private Scores scores;
+	
+	public Ideas(Integer userId, String title, String desc, String fullText, Scores scores){
+		this.userId = userId;
+		this.title = title;
+		this.desc = desc;
+		this.fullText = fullText;
+		this.scores = scores;
+	}
 
 	public String getTitle() {
 		return title;

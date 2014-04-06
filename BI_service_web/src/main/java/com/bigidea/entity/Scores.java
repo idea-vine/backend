@@ -27,6 +27,13 @@ public class Scores implements Serializable{
 	private Integer totalViews;
 	@Column
 	private Integer totalCounts;
+	
+	public Scores(Integer totalScore, Integer totalLikes, Integer totalViews, Integer totalCounts){
+		this.totalScore = totalScore;
+		this.totalLikes = totalLikes;
+		this.totalViews = totalViews;
+		this.totalCounts = totalCounts;
+	}
 
 	public Integer getTotalScore() {
 		return totalScore;
