@@ -1,7 +1,10 @@
 package com.bigidea.hibernate;
 
+import org.springframework.stereotype.Repository;
+
 import com.bigidea.entity.Users;
 
+@Repository
 public class UserHibernateImpl extends BaseDao<Users, Integer>  implements UserHibernate{
 
 	

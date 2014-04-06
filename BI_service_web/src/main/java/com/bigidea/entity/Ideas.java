@@ -4,7 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ideas {
@@ -12,9 +13,7 @@ public class Ideas {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
 	@Column
-	@OneToMany
 	private Integer userId;
 	@Column
 	private String title;
@@ -22,6 +21,9 @@ public class Ideas {
 	private String desc;
 	@Column
 	private String fullText;
+	@OneToOne
+	@JoinColumn(name = "scoreId")
+	private Scores scores;
 
 	public String getTitle() {
 		return title;

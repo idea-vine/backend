@@ -1,11 +1,23 @@
 package com.bigidea.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Scores {
 
+	@Id
+	@GeneratedValue
 	private Integer id;
+	@Column
 	private Integer totalScore;
+	@Column
 	private Integer totalLikes;
+	@Column
 	private Integer totalViews;
+	@Column
 	private Integer totalCounts;
 
 	public Integer getTotalScore() {

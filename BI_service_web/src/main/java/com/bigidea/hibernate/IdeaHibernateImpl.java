@@ -2,8 +2,11 @@ package com.bigidea.hibernate;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.bigidea.entity.Ideas;
 
+@Repository
 public class IdeaHibernateImpl extends BaseDao<Ideas, Integer> implements IdeaHibernate {
 	
 	@SuppressWarnings("unchecked")
@@ -21,4 +24,18 @@ public class IdeaHibernateImpl extends BaseDao<Ideas, Integer> implements IdeaHi
 	public List<Ideas> getAllIdeas(Integer uid) {
 		return loadAll(Ideas.class);
 	}
+
+
+	public Ideas getIdeaByid(Integer id) {
+		return find(Ideas.class, id);
+	}
+
+
+	public void deleteIdea(Ideas idea) {
+		delete(idea);
+	}
+
+
+
+
 }

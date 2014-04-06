@@ -9,7 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.orm.hibernate4.SessionFactoryUtils;
+
 
 public class BaseDao<T, PK extends Serializable> {
 
@@ -34,7 +35,7 @@ public class BaseDao<T, PK extends Serializable> {
 	@SuppressWarnings("unchecked")
 	public List<T> loadAll(Class<T> klass) {
 		Criteria criteria = getCriteria(klass);
-		prepareCriteria(criteria);
+		//prepareCriteria(criteria);
 		return criteria.list();
 	}
 
@@ -82,8 +83,8 @@ public class BaseDao<T, PK extends Serializable> {
 		this.sessionFactory = sessionFactory;
 	}
 
-	protected void prepareCriteria(Criteria criteria) {
-		SessionFactoryUtils.applyTransactionTimeout(criteria, sessionFactory);
-	}
+//	protected void prepareCriteria(Criteria criteria) {
+//		SessionFactoryUtils.(criteria, sessionFactory);
+//	}
 
 }
