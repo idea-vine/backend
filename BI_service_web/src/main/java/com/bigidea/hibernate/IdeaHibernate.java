@@ -9,7 +9,7 @@ public interface IdeaHibernate {
 	
 	public List<Ideas> getAllIdeasByUser(Integer uid);
 	public void saveIdea(Ideas idea);
-	public List<Ideas> getAllIdeas(Integer uid);
+	public List<Ideas> getAllIdeas();
 	public Ideas getIdeaByid(Integer id);
 	public void deleteIdea(Ideas idea);
 	

@@ -21,7 +21,7 @@ public class IdeaHibernateImpl extends BaseDao<Ideas, Integer> implements IdeaHi
 	}
 	
 
-	public List<Ideas> getAllIdeas(Integer uid) {
+	public List<Ideas> getAllIdeas() {
 		return loadAll(Ideas.class);
 	}
 
