@@ -11,7 +11,7 @@ import com.bigidea.entity.Ideas;
 import com.bigidea.entity.Users;
 import com.bigidea.hibernate.IdeaHibernate;
 
-@Service
+@Service(value="ideaService")
 public class IdeaServiceImpl implements IdeaService {
 	
 	@Autowired
