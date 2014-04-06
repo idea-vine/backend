@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Users save(Users users) {
-		save(users);
-		return userHibernate.getUser(users.getId());
+		userHibernate.save(users);
+		return users;
 	}
 
 	@Transactional
